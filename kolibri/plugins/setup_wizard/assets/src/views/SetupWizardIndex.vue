@@ -18,7 +18,6 @@
       <ProgressToolbar
         :currentStep="onboardingStep"
         :totalSteps="totalOnboardingSteps"
-        :style="{ backgroundColor: $coreActionNormal }"
         @backButtonClicked="goToPreviousStep"
       />
 
@@ -38,7 +37,7 @@
 
 <script>
 
-  import { mapActions, mapState, mapMutations, mapGetters } from 'vuex';
+  import { mapActions, mapState, mapMutations } from 'vuex';
   import responsiveWindow from 'kolibri.coreVue.mixins.responsiveWindow';
   import LoadingPage from './submission-states/LoadingPage';
   import ErrorPage from './submission-states/ErrorPage';
@@ -88,7 +87,6 @@
     },
     computed: {
       ...mapState(['onboardingStep', 'onboardingData', 'loading', 'error']),
-      ...mapGetters(['$coreActionNormal']),
       currentOnboardingForm() {
         return stepToOnboardingFormMap[this.onboardingStep] || null;
       },
@@ -154,11 +152,13 @@
     max-width: 550px;
     margin-top: 64px;
     margin-right: auto;
+    margin-bottom: 32px;
     margin-left: auto;
   }
 
   .mobile {
     margin-top: 40px;
+    margin-bottom: 20px;
   }
 
 </style>
